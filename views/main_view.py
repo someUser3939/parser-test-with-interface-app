@@ -24,10 +24,10 @@ class MainView:
             width=200
         )
         
-        self.btn_start = ft.ElevatedButton(
-            text="Запустити парсинг",
-            icon=ft.icons.PLAY_ARROW_ROUNDED,
-            style=ft.ButtonStyle(color=ft.colors.WHITE, bgcolor=ft.colors.BLUE_700),
+        self.btn_start = ft.Button(
+            content="Запустити парсинг",
+            icon=ft.Icons.PLAY_ARROW_ROUNDED,
+            style=ft.ButtonStyle(color=ft.Colors.WHITE, bgcolor=ft.Colors.BLUE_700),
             on_click=self.controller.start_parsing_process
         )
         
@@ -43,8 +43,8 @@ class MainView:
     def build_ui(self):
         """Компонує вікно додатка та додає елементи на сторінку."""
         self.page.title = "Async JSON Parser (Flet Architectural Template)"
-        self.page.window_width = 700
-        self.page.window_height = 600
+        self.page.window.width = 700
+        self.page.window.height = 600
         self.page.theme_mode = ft.ThemeMode.DARK
 
         # Панель налаштувань
@@ -69,9 +69,9 @@ class MainView:
                     self.progress_bar,
                     ft.Container(
                         content=self.log_box,
-                        border=ft.border.all(1, ft.colors.GREY_700),
+                        border=ft.Border.all(1, ft.Colors.GREY_700),
                         border_radius=5,
-                        bgcolor=ft.colors.BLACK26,
+                        bgcolor=ft.Colors.BLACK_26,
                         expand=True
                     )
                 ]),
@@ -89,7 +89,7 @@ class MainView:
 
     def append_log(self, text: str):
         """Метод безпечного додавання текстового логу в контейнер."""
-        self.log_box.controls.add(ft.Text(f"• {text}", size=12, color=ft.colors.GREY_300))
+        self.log_box.controls.append(ft.Text(f"• {text}", size=12, color=ft.Colors.GREY_300))
         # Обмежуємо кількість збережених UI елементів логу для уникнення витоку пам'яті
         if len(self.log_box.controls) > 150:
             self.log_box.controls.pop(0)

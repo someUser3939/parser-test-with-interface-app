@@ -14,4 +14,4 @@ def main(page: ft.Page):
 
 if __name__ == "__main__":
     # Запуск Flet додатка (як десктопне вікно)
-    ft.app(target=main)
+    ft.run(main)
